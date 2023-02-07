@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "6HL2ipLJO/Kug+jWX4AynVvV9zKKjZubOzil5S2CLcqxPpASZKJadGkUAw1mulV1WSuEIDKIxYZHOEMq7egntw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Lucas\\OneDrive\\Bureau\\Pricer\\Pricer\\Pricer\\Pricer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Lucas\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
+    "C:\\Users\\Lucas\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
