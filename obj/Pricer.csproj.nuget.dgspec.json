@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lucas\\OneDrive\\Bureau\\Pricer\\Pricer\\Pricer\\Pricer.csproj": {}
+    "C:\\Users\\Lucas\\OneDrive\\Bureau\\Pricer\\Pricer\\Pricer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lucas\\OneDrive\\Bureau\\Pricer\\Pricer\\Pricer\\Pricer.csproj": {
+    "C:\\Users\\Lucas\\OneDrive\\Bureau\\Pricer\\Pricer\\Pricer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lucas\\OneDrive\\Bureau\\Pricer\\Pricer\\Pricer\\Pricer.csproj",
+        "projectUniqueName": "C:\\Users\\Lucas\\OneDrive\\Bureau\\Pricer\\Pricer\\Pricer.csproj",
         "projectName": "Pricer",
-        "projectPath": "C:\\Users\\Lucas\\OneDrive\\Bureau\\Pricer\\Pricer\\Pricer\\Pricer.csproj",
+        "projectPath": "C:\\Users\\Lucas\\OneDrive\\Bureau\\Pricer\\Pricer\\Pricer.csproj",
         "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lucas\\OneDrive\\Bureau\\Pricer\\Pricer\\Pricer\\obj\\",
+        "outputPath": "C:\\Users\\Lucas\\OneDrive\\Bureau\\Pricer\\Pricer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,10 @@
             "Newtonsoft.Json.Bson": {
               "target": "Package",
               "version": "[1.0.2, )"
+            },
+            "ScottPlot": {
+              "target": "Package",
+              "version": "[4.1.60, )"
             }
           },
           "imports": [

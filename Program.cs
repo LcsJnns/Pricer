@@ -10,6 +10,7 @@ using YahooAPI;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using Deserialization;
+using Graphic;
 
 namespace PricerProject
 {
@@ -52,6 +53,8 @@ namespace PricerProject
             CallPrice = Black_Scholes.Call_Pricing(CoursAction, Strike, 0.5, TauxSansRisque, Volatility);
             Console.WriteLine($"Call price = {CallPrice}");
 
+            Graphe gc = new Graphe();
+            gc.CreateGraphe();
 
 
         }
