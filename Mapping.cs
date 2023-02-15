@@ -15,23 +15,71 @@ namespace Map
         public double expirationTime;
         public double volatility;
 
-        public Mapping()
+        public Mapping(string text)
         {
             Task.Run(async () =>
             {
                 DataMarket datamarket = new DataMarket();
                 Root Myroot = await datamarket.JSONtoclass();
 
-                stockPrice = Myroot.optionChain.result[0].options[0].calls[0].lastPrice;
-                strike = Myroot.optionChain.result[0].options[0].calls[0].strike;
-                double tempExpirationTime = Myroot.optionChain.result[0].options[0].calls[0].expiration;
-                volatility = Myroot.optionChain.result[0].options[0].calls[0].impliedVolatility;
 
-                DateTime today = DateTime.Now;
-                double timestamp = (long)(today - new DateTime(1970, 1, 1)).TotalSeconds;
-                tempExpirationTime -= timestamp;
-                expirationTime = tempExpirationTime / 31536000;
+                
 
+                int nombre = 1;
+                if (text == "Call")
+                {
+                    int testc = Myroot.optionChain.result[0].options[0].calls.Count();
+                    Console.Write($"Quel contrat : (1 à {testc}) : ");
+                    try
+                    {
+                        string saisie = Console.ReadLine();
+                        nombre = int.Parse(saisie);
+
+                        Console.WriteLine("Vous avez saisi le nombre : " + nombre);
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("La saisie n'est pas un nombre entier valide.");
+                    }
+                    stockPrice = Myroot.optionChain.result[0].options[0].calls[nombre].lastPrice;
+                    strike = Myroot.optionChain.result[0].options[0].calls[nombre].strike;
+                    double tempExpirationTime = Myroot.optionChain.result[0].options[0].calls[nombre].expiration;
+                    volatility = Myroot.optionChain.result[0].options[0].calls[nombre].impliedVolatility;
+
+                    DateTime today = DateTime.Now;
+                    double timestamp = (long)(today - new DateTime(1970, 1, 1)).TotalSeconds;
+                    tempExpirationTime -= timestamp;
+                    expirationTime = tempExpirationTime / 31536000;
+                }
+                else if (text == "Put")
+                {
+                    int testc = Myroot.optionChain.result[0].options[0].puts.Count();
+                    Console.Write($"Quel contrat : (1 à {testc}) : ");
+                    try
+                    {
+                        string saisie = Console.ReadLine();
+                        nombre = int.Parse(saisie);
+
+                        Console.WriteLine("Vous avez saisi le nombre : " + nombre);
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("La saisie n'est pas un nombre entier valide.");
+                    }
+                    stockPrice = Myroot.optionChain.result[0].options[0].puts[nombre].lastPrice;
+                    strike = Myroot.optionChain.result[0].options[0].puts[nombre].strike;
+                    double tempExpirationTime = Myroot.optionChain.result[0].options[0].puts[nombre].expiration;
+                    volatility = Myroot.optionChain.result[0].options[0].puts[nombre].impliedVolatility;
+
+                    DateTime today = DateTime.Now;
+                    double timestamp = (long)(today - new DateTime(1970, 1, 1)).TotalSeconds;
+                    tempExpirationTime -= timestamp;
+                    expirationTime = tempExpirationTime / 31536000;
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
 
             }).Wait();
         }

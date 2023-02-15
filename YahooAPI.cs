@@ -16,10 +16,14 @@ namespace YahooAPI
         public async Task<string> GetDatasFromAPI()
         {
             var client = new HttpClient();
+            Console.Write("Symbole de l'option : ");
+            string symbol = Console.ReadLine();
+            string expiration = "1705622400";
+            string url = string.Format("https://yahoo-finance15.p.rapidapi.com/api/yahoo/op/option/{0}?expiration={1}", symbol, expiration);;
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://yahoo-finance15.p.rapidapi.com/api/yahoo/op/option/AAPL?expiration=1705622400"),
+                RequestUri = new Uri(url),
                 Headers =
                 {
                     { "X-RapidAPI-Key", "7317af99d1mshc38280fcd368d36p11c444jsnf8830c0b085a" },

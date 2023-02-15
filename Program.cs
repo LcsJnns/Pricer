@@ -20,22 +20,30 @@ namespace PricerProject
     {
         static async Task Main(string[] args)
         {
+            Console.Write("Call ou Put : ");
+            string text = Console.ReadLine();
 
-
-            Mapping mapping = new Mapping();
+            Mapping mapping = new Mapping(text);
             Console.WriteLine("Stock Price : " + mapping.stockPrice);
             Console.WriteLine("strike : " + mapping.strike);
             Console.WriteLine("expiration date : " + mapping.expirationTime);
             Console.WriteLine("volatility : " + mapping.volatility);
 
-            double CallPrice = Black_Scholes.Call_Pricing(mapping.stockPrice, mapping.strike, mapping.expirationTime, 0.03, mapping.volatility);
-            Console.WriteLine($"Call price = {CallPrice}");
+            double callPrice = Black_Scholes.Call_Pricing(mapping.stockPrice, mapping.strike, mapping.expirationTime, 0.03, mapping.volatility);
+            Console.WriteLine($"Call price = {callPrice}");
+
+            double putPrice = Black_Scholes.Put_Pricing(mapping.stockPrice, mapping.strike, mapping.expirationTime, 0.03, mapping.volatility);
+            Console.WriteLine($"Put price = {putPrice}");
 
             Graphe gc = new Graphe();
-            gc.CreateGraphe();
-
-
-
+            if (text == "Call")
+            {
+                gc.CreateCallGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
+            }
+            else if (text =="Put")
+            {
+                gc.CreatePutGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
+            }
         }
 
     }
