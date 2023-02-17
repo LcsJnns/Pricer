@@ -18,7 +18,6 @@ namespace Function
         {
             double d1 = (Math.Log(S / E) + (r + v * v / 2) * T) / (v * Math.Sqrt(T));
             double d2 = d1 - v * Math.Sqrt(T);
-
             return S * ND(d1) - E * Math.Exp(-r * T) * ND(d2);
         }
 
@@ -32,7 +31,7 @@ namespace Function
         }
 
         // ND pour Normal distribution, Loi normale centrée réduite, qui correspond a phi dans la formule de Black Scholes
-        private static double ND(double E)
+        public static double ND(double E)
         {
             double L = 0.0;
             double K = 0.0;
