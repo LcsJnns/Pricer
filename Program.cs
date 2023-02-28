@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using Function;
-using System.Net.Http;
-using YahooAPI;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using Deserialization;
-using System.Drawing;
+﻿using Function;
 using Graphic;
 using Map;
 
@@ -20,14 +8,20 @@ namespace PricerProject
     {
         static async Task Main(string[] args)
         {
+            // Call ou Put ?
             Console.Write("Call ou Put : ");
             string text = Console.ReadLine();
+            
 
+            // On récupere les données à l'API
             Mapping mapping = new Mapping(text);
+
+            // Affiche les données
             Console.WriteLine("Stock Price : " + 300);
-            Console.WriteLine("strike : " + 250);
-            Console.WriteLine("expiration date : " + 1);
-            Console.WriteLine("volatility : " + 0.15);
+            Console.WriteLine("Strike : " + 250);
+            Console.WriteLine("Expiration date : " + 1);
+            Console.WriteLine("Volatility : " + 0.15);
+            Console.WriteLine("Risk - Free Interest Rate : " + 0.03);
 
             double callPrice = Black_Scholes.Call_Pricing(300, 250, 1, 0.03, 0.15);
             Console.WriteLine($"Call price = {callPrice}");
@@ -35,6 +29,7 @@ namespace PricerProject
             double putPrice = Black_Scholes.Put_Pricing(300, 250, 1, 0.03, 0.15);
             Console.WriteLine($"Put price = {putPrice}");
 
+            // Créer les graphes pour Call ou Put
             Graphe gc = new Graphe();
             if (text == "Call")
             {

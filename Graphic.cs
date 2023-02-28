@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using Function;
-using Map;
+﻿using Function;
 using ScottPlot;
-using ScottPlot.Drawing.Colormaps;
 
 namespace Graphic
 {
@@ -15,12 +7,13 @@ namespace Graphic
     {
         public void CreateCallGraphe(double stockPrice, double strike, double expirationTime, double volatility)
         {
+            // On créer une instance de Plot
             var plt = new Plot();
 
-            
-
+            // On récupere le prix de l'option
             double callPrice = Black_Scholes.Call_Pricing(stockPrice, strike, expirationTime, 0.03, volatility);
 
+            // On créer les coordonnées des points dans 2 tableaux
             double[] xs = {  stockPrice/2,  strike ,  strike + callPrice,  strike + (2 * callPrice),  strike + (3 * callPrice) };
             double[] ys = { -callPrice, - callPrice, 0 , callPrice , 2* callPrice };
 
@@ -30,6 +23,7 @@ namespace Graphic
             plt.PlotVLine( strike + callPrice,label : $"In the money : { strike + callPrice}" , color: System.Drawing.Color.Green, lineWidth: 1);
             plt.Legend(location: ScottPlot.Alignment.UpperLeft);
 
+            // On ajoute la courbe et on sauvegarde l'image dans le dossier Images
             plt.AddScatter(xs, ys, color : System.Drawing.Color.Black);
             plt.SaveFig("Images/Black_Scholes_Call.png");
         }

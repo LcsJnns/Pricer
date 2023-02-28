@@ -31,6 +31,7 @@ namespace Function
         }
 
         // ND pour Normal distribution, Loi normale centrée réduite, qui correspond a phi dans la formule de Black Scholes
+        // a1, a2 ,a3, a4 et a5 sont des constantes utilisées pour calculer la distribution normale
         public static double ND(double E)
         {
             double L = 0.0;
