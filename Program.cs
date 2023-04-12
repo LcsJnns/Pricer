@@ -1,6 +1,7 @@
 ﻿using Function;
 using Graphic;
 using Map;
+using System.Net.NetworkInformation;
 
 namespace PricerProject
 {
@@ -17,40 +18,40 @@ namespace PricerProject
             Mapping mapping = new Mapping(text);
 
             // Affiche les données
-            Console.WriteLine("Stock Price : " + 300);
-            Console.WriteLine("Strike : " + 250);
-            Console.WriteLine("Expiration date : " + 1);
-            Console.WriteLine("Volatility : " + 0.15);
+            Console.WriteLine("Stock Price : " + mapping.stockPrice);
+            Console.WriteLine("Strike : " + mapping.strike);
+            Console.WriteLine("Expiration date : " + mapping.expirationTime);
+            Console.WriteLine("Volatility : " + mapping.volatility);
             Console.WriteLine("Risk - Free Interest Rate : " + 0.03);
 
-            double callPrice = Black_Scholes.Call_Pricing(300, 250, 1, 0.03, 0.15);
+            double callPrice = Black_Scholes.Call_Pricing(mapping.stockPrice, mapping.strike, mapping.expirationTime, 0.03, mapping.volatility);
             Console.WriteLine($"Call price = {callPrice}");
 
-            double putPrice = Black_Scholes.Put_Pricing(300, 250, 1, 0.03, 0.15);
+            double putPrice = Black_Scholes.Put_Pricing(mapping.stockPrice, mapping.strike, mapping.expirationTime, 0.03, mapping.volatility);
             Console.WriteLine($"Put price = {putPrice}");
 
             // Créer les graphes pour Call ou Put
             Graphe gc = new Graphe();
             if (text == "Call")
             {
-                gc.CreateCallGraphe(300, 250, 1, 0.15);
-                gc.CreateCallPriceGraphe(300, 250, 1, 0.15);
-                gc.CreateDeltaGraphe(300, 250, 1, 0.15);
-                gc.CreateGammaGraphe(300, 250, 1, 0.15);
-                gc.CreateThetaGraphe(300, 250, 1, 0.15);
-                gc.CreateVegaGraphe(300, 250, 1, 0.15);
-                gc.CreateRhoGraphe(300, 250, 1, 0.15);
+                gc.CreateCallGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
+                gc.CreateCallPriceGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
+                gc.CreateDeltaGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
+                gc.CreateGammaGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
+                gc.CreateThetaGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
+                gc.CreateVegaGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
+                gc.CreateRhoGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
 
             }
             else if (text =="Put")
             {
-                gc.CreatePutGraphe(300, 250, 1, 0.15);
-                gc.CreatePutPriceGraphe(300, 250, 1, 0.15);
-                gc.CreateDeltaGraphe(300, 250, 1, 0.15);
-                gc.CreateGammaGraphe(300, 250, 1, 0.15);
-                gc.CreateThetaGraphe(300, 250, 1, 0.15);
-                gc.CreateVegaGraphe(300, 250, 1, 0.15);
-                gc.CreateRhoGraphe(300, 250, 1, 0.15);
+                gc.CreatePutGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
+                gc.CreatePutPriceGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
+                gc.CreateDeltaGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
+                gc.CreateGammaGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
+                gc.CreateThetaGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
+                gc.CreateVegaGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
+                gc.CreateRhoGraphe(mapping.stockPrice, mapping.strike, mapping.expirationTime, mapping.volatility);
             }
         }
 
