@@ -10,8 +10,7 @@ namespace PricerProject
         {
             // Call ou Put ?
             Console.Write("Call ou Put : ");
-            string text = Console.ReadLine();
-            
+            string text = Console.ReadLine().ToLower();
 
             // On récupere les données à l'API
             Mapping mapping = new Mapping(text);
@@ -31,7 +30,7 @@ namespace PricerProject
 
             // Créer les graphes pour Call ou Put
             Graphe gc = new Graphe();
-            if (text == "Call")
+            if (text == "call")
             {
                 gc.CreateCallGraphe(300, 250, 1, 0.15);
                 gc.CreateCallPriceGraphe(300, 250, 1, 0.15);
@@ -42,7 +41,7 @@ namespace PricerProject
                 gc.CreateRhoGraphe(300, 250, 1, 0.15);
 
             }
-            else if (text =="Put")
+            else if (text =="put")
             {
                 gc.CreatePutGraphe(300, 250, 1, 0.15);
                 gc.CreatePutPriceGraphe(300, 250, 1, 0.15);
